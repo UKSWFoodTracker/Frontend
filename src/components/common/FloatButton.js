@@ -1,6 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import uuidv4 from 'uuid';
+
+
+import {getIngridients} from '../../actions/ingridients';
+import IngridientsList from './IngridientsList';
 
 
 class FloatButton extends React.Component {
@@ -18,6 +22,10 @@ class FloatButton extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.addIngridient = this.addIngridient.bind(this);
   }
+
+    componentDidMount() {
+        this.props.getIngridients();
+    }
 
   handleChange(e) {
     e.preventDefault();
@@ -46,7 +54,7 @@ class FloatButton extends React.Component {
 
   render() {
     const {ingridients} = this.state;
-    console.log(this.state)
+    console.log(this.props)
     return (
       <div>
         <Button color="danger" className="btn btn-primary btn-float" onClick={this.toggle}>+</Button>
@@ -73,17 +81,13 @@ class FloatButton extends React.Component {
                             onChange={this.handleChange} value={this.state.kcal}/>
                         <button className="btn btn-primary ml-1" onClick={this.addIngridient}>+</button>
                     </div>
-
-                </FormGroup>    
-                    {   console.log(Object.entries(ingridients))}
-                        {Object.entries(ingridients).forEach(([key, value]) => {
-                        console.log(`${key} ${value}`); // "a 5", "b 7", "c 9"
-                    })}
-            </FormGroup>
+                </FormGroup>
+                    <IngridientsList />
+                </FormGroup>
           </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Save</Button>{' '}
+            <Button color="primary" onClick={this.toggle}>Save</Button>
           </ModalFooter>
         </Modal>
       </div>
@@ -91,4 +95,8 @@ class FloatButton extends React.Component {
   }
 }
 
-export default FloatButton;
+const mapStateToProps = state => ({
+    ingr: state.ingr
+});
+
+export default connect(mapStateToProps, {getIngridients})(FloatButton);
