@@ -14,7 +14,8 @@ const Layout = () => (
         <div className="container">
         <Switch>
             {/* Dashboard */}
-            <Route path="/dashboard" component={Dashboard} />
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
             {/* not found */}
             <Route path="/not-found" component={NotFound} />
             <Redirect to="/not-found" />
