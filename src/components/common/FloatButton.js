@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-import {getIngridients} from '../../actions/ingridients';
+import { getIngridients, addIngridient } from '../../actions/ingridients';
 import IngridientsList from './IngridientsList';
 
 
@@ -13,14 +13,13 @@ class FloatButton extends React.Component {
     this.state = {
       modal: true,
       meal: 'breakfast',
-      ingridients: [],
       ingridient: '',
       kcal: ''
     };
 
     this.toggle = this.toggle.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.addIngridient = this.addIngridient.bind(this);
+    this.addIngridients = this.addIngridients.bind(this);
   }
 
     componentDidMount() {
@@ -42,14 +41,13 @@ class FloatButton extends React.Component {
     });
   }
 
-  addIngridient(e) {
+  addIngridients(e) {
     e.preventDefault();
     const ingridient = this.state.ingridient;
     const kcal = this.state.kcal;
     // let joined = [...this.state.ingridients, {[ingridient]: kcal}]
     // console.log('j',joined)
-    this.setState({ ingridients: [...this.state.ingridients, {ingridient: kcal}] }) 
-
+    this.props.addIngridient({[ingridient]: kcal})
   }
 
   render() {
@@ -79,7 +77,7 @@ class FloatButton extends React.Component {
                             onChange={this.handleChange} value={this.state.ingridient} />
                         <Input className="ing-input" type="text" name="kcal" placeholder="kcal" 
                             onChange={this.handleChange} value={this.state.kcal}/>
-                        <button className="btn btn-primary ml-1" onClick={this.addIngridient}>+</button>
+                        <button className="btn btn-primary ml-1" onClick={this.addIngridients}>+</button>
                     </div>
                 </FormGroup>
                     <IngridientsList />
@@ -99,4 +97,4 @@ const mapStateToProps = state => ({
     ingr: state.ingr
 });
 
-export default connect(mapStateToProps, {getIngridients})(FloatButton);
+export default connect(mapStateToProps, {getIngridients, addIngridient})(FloatButton);

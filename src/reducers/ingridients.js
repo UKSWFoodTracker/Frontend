@@ -1,5 +1,5 @@
 import { 
-    GET_INGRIDIENTS
+    GET_INGRIDIENTS, ADD_INGRIDIENT
 } from '../actions/types';
 
 const initialState = {
@@ -13,6 +13,12 @@ export default (state = initialState, action = {}) => {
             return {
                 ...state,
                 ingridients: [...state.ingridients],
+                loading: false
+            } 
+        case ADD_INGRIDIENT:
+            return {
+                ...state,
+                ingridients: [...state.ingridients, action.ingridient],
                 loading: false
             }
         default:
