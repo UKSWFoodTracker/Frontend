@@ -1,9 +1,9 @@
 import { 
-    GET_INGRIDIENTS, ADD_INGRIDIENT
+    GET_INGRIDIENTS, ADD_INGRIDIENT, DELETE_INGRIDIENT
 } from '../actions/types';
 
 const initialState = {
-    ingridients: [{"dupa": 50}, {"koza": 500}, {"kebab": 90}],
+    ingridients: [{"ciastko": 50, "id": 'dasd3'}, {"kebab": 500, "id": "dsadasd"}, {"pomidorek": 90, "id": '4324sad'}],
     loading: false
 };
 
@@ -20,6 +20,11 @@ export default (state = initialState, action = {}) => {
                 ...state,
                 ingridients: [...state.ingridients, action.ingridient],
                 loading: false
+            }
+        case DELETE_INGRIDIENT:
+            return {
+                ...state,
+                ingridients: state.ingridients.filter(item => item.id !== action.delete)
             }
         default:
             return state;

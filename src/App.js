@@ -3,7 +3,7 @@ import AppRouter from './routes/AppRouter';
 import { Provider } from 'react-redux';
 
 import store from './store';
-import './App.css';
+import './styles/App.css';
 
 
 class App extends Component {

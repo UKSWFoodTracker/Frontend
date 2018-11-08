@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import uuid from 'uuid';
 
-
-import { getIngridients, addIngridient } from '../../actions/ingridients';
+import { getIngridients, addIngridient, postMeal } from '../../actions/ingridientsActions';
 import IngridientsList from './IngridientsList';
+
 
 
 class FloatButton extends React.Component {
@@ -20,6 +21,7 @@ class FloatButton extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.addIngridients = this.addIngridients.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
     componentDidMount() {
@@ -41,25 +43,34 @@ class FloatButton extends React.Component {
     });
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+
+    const meal = {
+        meal: this.state.meal,
+        ingridients: this.props.ingr.ingridients
+    }
+
+    this.props.postMeal(meal);
+  }
+
   addIngridients(e) {
     e.preventDefault();
+
     const ingridient = this.state.ingridient;
     const kcal = this.state.kcal;
-    // let joined = [...this.state.ingridients, {[ingridient]: kcal}]
-    // console.log('j',joined)
-    this.props.addIngridient({[ingridient]: kcal})
+
+    this.props.addIngridient({[ingridient]: kcal, id: uuid()})
   }
 
   render() {
-    const {ingridients} = this.state;
-    console.log(this.props)
     return (
       <div>
         <Button color="danger" className="btn btn-primary btn-float" onClick={this.toggle}>+</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add your meal</ModalHeader>
           <ModalBody>
-          <Form>
+          <Form onSubmit={this.onSubmit}>
             <FormGroup>
                 <Label for="exampleSelect">Select meal type</Label>
                 <Input type="select" name="meal" id="exampleSelect" value={this.state.meal} onChange={this.handleChange} className="mb-2">
@@ -82,11 +93,11 @@ class FloatButton extends React.Component {
                 </FormGroup>
                     <IngridientsList />
                 </FormGroup>
+            <hr />
+
+            <Input color="primary" className="btn btn-primary" value="Save" type="submit" onClick={this.toggle} />
           </Form>
           </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Save</Button>
-          </ModalFooter>
         </Modal>
       </div>
     );
@@ -97,4 +108,4 @@ const mapStateToProps = state => ({
     ingr: state.ingr
 });
 
-export default connect(mapStateToProps, {getIngridients, addIngridient})(FloatButton);
+export default connect(mapStateToProps, {getIngridients, addIngridient, postMeal})(FloatButton);

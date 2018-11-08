@@ -1,15 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import IngridientListItem from './IngridientListItem';
 import uuidv4 from 'uuid';
-
-
 
 const IngridientsList = (props) => {
     return (
         <div>
-            {props.ingr.ingridients.map( (item) => {
-                for (let key in item) {
-                   return (<h3 key={uuidv4()}>{key}: {item[key]}kcal</h3>)
+            {props.ingr.ingridients.map( item => {
+                for (let keys in item) {
+                   return (
+                        <IngridientListItem 
+                            key={uuidv4()}
+                            item={keys}
+                            ide={item[keys]}
+                            itemId={item.id}
+                            {...item} 
+                        />
+                    )
                 }
             }     
             )}

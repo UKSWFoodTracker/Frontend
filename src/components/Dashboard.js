@@ -7,7 +7,7 @@ class Dashboard extends Component {
         return(
             <div className="container mt-3">
                <h1>Dashboard</h1>
-               <h4>Click + button to add the meal.</h4>
+               <h4>Click + button to add a meal.</h4>
                <FloatButton />
             </div>
         )
