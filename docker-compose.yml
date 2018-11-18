@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  client:
+    build:
+      context: ./foodtracker-app
+      dockerfile: Dockerfile
+    volumes:
+      - './foodtracker-app:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
