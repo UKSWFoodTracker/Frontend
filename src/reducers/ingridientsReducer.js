@@ -3,7 +3,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    ingridients: [{"ciastko": 50, "id": 'dasd3'}, {"kebab": 500, "id": "dsadasd"}, {"pomidorek": 90, "id": '4324sad'}],
+    ingridients: [],
     loading: false
 };
 

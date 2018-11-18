@@ -11,8 +11,8 @@ const IngridientsList = (props) => {
                    return (
                         <IngridientListItem 
                             key={uuidv4()}
-                            item={keys}
-                            ide={item[keys]}
+                            item={item.name}
+                            ide={item.calories}
                             itemId={item.id}
                             {...item} 
                         />

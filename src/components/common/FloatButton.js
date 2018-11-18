@@ -24,9 +24,9 @@ class FloatButton extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-    componentDidMount() {
-        this.props.getIngridients();
-    }
+  componentDidMount() {
+    this.props.getIngridients();
+  }
 
   handleChange(e) {
     e.preventDefault();
@@ -47,10 +47,12 @@ class FloatButton extends React.Component {
     e.preventDefault();
 
     const meal = {
-        meal: this.state.meal,
-        ingridients: this.props.ingr.ingridients
-    }
-
+        name: this.state.meal,
+        ingredients: this.props.ingr.ingridients.map(item => {
+            return {"name": item.name, "calories": Number.parseInt(item.calories)}
+        })
+	}
+	console.log(meal)
     this.props.postMeal(meal);
   }
 
@@ -60,7 +62,7 @@ class FloatButton extends React.Component {
     const ingridient = this.state.ingridient;
     const kcal = this.state.kcal;
 
-    this.props.addIngridient({[ingridient]: kcal, id: uuid()})
+    this.props.addIngridient({name: ingridient, calories: kcal, id: uuid()})
   }
 
   render() {
@@ -105,7 +107,7 @@ class FloatButton extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    ingr: state.ingr
+  ingr: state.ingr
 });
 
 export default connect(mapStateToProps, {getIngridients, addIngridient, postMeal})(FloatButton);

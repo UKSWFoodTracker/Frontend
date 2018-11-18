@@ -1,1 +1,1 @@
-export const API = 'API';
+export const API = 'http://foodtracker-api.azurewebsites.net/api';

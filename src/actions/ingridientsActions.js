@@ -27,12 +27,9 @@ export const addIngridient = ingridient => dispatch => {
 
 export const postMeal = meal => dispatch => {
     axios
-        .post(`${API}`, meal)
-        .catch(err =>
-            dispatch({
-              type: 'GET_ERRORS',
-              payload: err.response.data
-        })
+        .post(`${API}/meals/add`, meal)
+        .then(res => console.log(res))
+        .catch(err => console.log("error: ", err)
     )
     
 }
