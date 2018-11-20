@@ -29,7 +29,7 @@ export default class NavigationBar extends Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar dark expand="md" id="navbar">
           <NavbarBrand href="/">FoodTracker</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
