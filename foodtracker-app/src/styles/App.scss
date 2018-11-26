@@ -7,6 +7,18 @@
   height: 40vmin;
 }
 
+.btn-primary {
+    background-color: lightgreen;
+    border-color: lightgreen;
+}
+
+
+.btn-primary:hover {
+    background-color: darkgreen;
+    border-color: darkgreen;
+}
+
+
 #navbar {
     background-color: crimson !important;
 }
@@ -40,7 +52,7 @@
     bottom: -4px;
     right: 10px;
     margin-bottom: 10px;
-    border-radius: 50%;
+    border-radius: 50%
 }
 
 .ing {
@@ -59,4 +71,8 @@
 .ingridient {
     border: 1px solid green;
     width: 100%;
+}
+
+#meal {
+    background-color: lavender;
 }

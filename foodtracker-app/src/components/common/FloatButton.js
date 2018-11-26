@@ -62,7 +62,7 @@ class FloatButton extends React.Component {
     const ingridient = this.state.ingridient;
     const kcal = this.state.kcal;
 
-    this.props.addIngridient({name: ingridient, calories: kcal, id: uuid()})
+    this.props.addIngridient({name: ingridient,  calories: kcal, id: uuid()})
   }
 
   render() {
@@ -97,7 +97,7 @@ class FloatButton extends React.Component {
                 </FormGroup>
             <hr />
 
-            <Input color="primary" className="btn btn-primary" value="Save" type="submit" onClick={this.toggle} />
+            <Input className="btn btn-primary" value="Save" type="submit" onClick={this.toggle} />
           </Form>
           </ModalBody>
         </Modal>

@@ -1,7 +1,9 @@
 import {
     GET_INGRIDIENTS,
     ADD_INGRIDIENT,
-    DELETE_INGRIDIENT
+    DELETE_INGRIDIENT,
+    GET_MEALS,
+    LOADING_ON
 } from './types';
 import axios from 'axios';
 import { API } from '../routes/Api';
@@ -27,12 +29,30 @@ export const addIngridient = ingridient => dispatch => {
 
 export const postMeal = meal => dispatch => {
     axios
-        .post(`${API}/meals/add`, meal)
-        .then(res => console.log(res))
+        .post(`${API}/meals`, meal)
+        .then(() => dispatch(getMeals()))
         .catch(err => console.log("error: ", err)
     )
     
 }
 
-    
+export const getMeals = () => dispatch => {
+    dispatch(setLoading());
+    axios
+      .get(`${API}/meals`)
+      .then( res => {
+          dispatch({
+              type: GET_MEALS,
+              data: res
+          })
+      })
+      .catch(err => console.log("Error: ", err))
+}
+
+export const setLoading = () => {
+    return {
+        type: LOADING_ON
+    }
+}
+
 
