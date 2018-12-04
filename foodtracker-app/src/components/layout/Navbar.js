@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { loggedUser, logoutUser } from '../../actions/authActions';
 import {
   Collapse,
   Navbar,
@@ -7,60 +9,63 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+} from 'reactstrap';
 
-export default class NavigationBar extends Component {
+
+class NavigationBar extends Component {
   constructor(props) {
     super(props);
-
-    this.toggle = this.toggle.bind(this);
+    
     this.state = {
-      isOpen: false
+        isOpen: false
     };
+    
+    this.toggle = this.toggle.bind(this);
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
+
   render() {
+    const gusetUser = (
+        <Nav className="ml-auto" navbar>
+            <NavItem>
+                <NavLink href="/login">Logowanie</NavLink>
+            </NavItem>
+            <NavItem>
+                <NavLink href="/register">Rejestracja</NavLink>
+            </NavItem>
+      </Nav>
+    )
+
+    const loggedUser = (
+        <Nav className="ml-auto" navbar>
+            <NavItem>
+                <NavLink onClick={() => this.props.logoutUser()}>Wyloguj</NavLink>
+            </NavItem>
+        </Nav>
+    )
+
     return (
       <div>
         <Navbar dark expand="md" id="navbar">
           <NavbarBrand href="/">FoodTracker</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
+            {this.props.auth.isAuthenticated ? loggedUser : gusetUser}
           </Collapse>
         </Navbar>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+});
+
+
+export default connect(mapStateToProps, {logoutUser})(NavigationBar);
