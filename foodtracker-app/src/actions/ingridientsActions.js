@@ -31,7 +31,7 @@ export const postMeal = meal => dispatch => {
     axios
         .post(`${API}/meals`, meal)
         .then(() => dispatch(getMeals()))
-        .catch(err => console.log("error: ", err)
+        .catch(err => console.error("error: ", err)
     )
     
 }
@@ -46,7 +46,7 @@ export const getMeals = () => dispatch => {
               data: res
           })
       })
-      .catch(err => console.log("Error: ", err))
+      .catch(err => console.error("Error: ", err))
 }
 
 export const setLoading = () => {

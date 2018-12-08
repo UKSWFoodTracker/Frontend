@@ -12,7 +12,7 @@ class FloatButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: true,
+      modal: false,
       meal: 'breakfast',
       ingridient: '',
       kcal: ''
@@ -52,7 +52,7 @@ class FloatButton extends React.Component {
             return {"name": item.name, "calories": Number.parseInt(item.calories)}
         })
 	}
-	console.log(meal)
+
     this.props.postMeal(meal);
   }
 
