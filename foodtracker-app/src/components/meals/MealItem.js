@@ -1,11 +1,21 @@
 import React from 'react';
 import uuid from 'uuid';
+import {connect} from 'react-redux';
+import { deleteMeal } from '../../actions/ingridientsActions';
+
 
 const MealItem = (props) => {
     return (
         <div>
-            {props.data.map(item => (
+            {props.data.map(item => {
+                let sumCalories = 0;
+                return (
                 <div id="meal" className="container" key={uuid()}>
+                    <button className="btn btn-outline-danger btn-sm float-right mt-1"
+                        onClick={() => props.deleteMeal(item.id) }
+                    >
+                        Delete
+                    </button>
                     <h3>{item.name}</h3>
                     <hr />
                         <div>
@@ -17,20 +27,29 @@ const MealItem = (props) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {item.ingredients.map( ingredient => (
+                                {item.ingredients.map( ingredient => {
+                                    sumCalories = sumCalories + ingredient.calories;
+                                    return (
                                     <tr key={uuid()}>
                                         <td>{ingredient.name}</td>
                                         <td>{ingredient.calories}</td>
                                     </tr>
-                                ))}
+                                )})}
+                                    <tr key={uuid()}>
+                                        <td ><b>total calories</b></td>
+                                        <td><b>{sumCalories}</b></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                 </div>
-            ))}
+            )})}
         </div>
     )
 }
 
+const mapStateToProps = state => ({
+    ingr: state.ingr
+});
 
-export default MealItem;
+export default connect(mapStateToProps, { deleteMeal })(MealItem);

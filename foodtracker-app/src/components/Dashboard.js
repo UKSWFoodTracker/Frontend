@@ -13,7 +13,6 @@ class Dashboard extends Component {
 
     render() {
         const meals = this.props.ingr.meals.data || [];
-        const { loading } = this.props.ingr;
 
         return(
             <div className="container mt-3">

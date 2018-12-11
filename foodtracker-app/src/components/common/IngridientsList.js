@@ -18,8 +18,8 @@ const IngridientsList = (props) => {
                         />
                     )
                 }
-            }     
-            )}
+                return true;
+            })}
         </div>
     )
 };
