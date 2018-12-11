@@ -36,6 +36,13 @@ export const postMeal = meal => dispatch => {
     
 }
 
+export const deleteMeal = mealID => dispatch => {
+    axios
+        .delete(`${API}/meals/${mealID}`)
+        .then(() => dispatch(getMeals()))
+        .catch(err => console.error("error: ", err))
+}
+
 export const getMeals = () => dispatch => {
     dispatch(setLoading());
     axios
