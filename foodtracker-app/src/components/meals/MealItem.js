@@ -2,6 +2,7 @@ import React from 'react';
 import uuid from 'uuid';
 import {connect} from 'react-redux';
 import { deleteMeal } from '../../actions/ingridientsActions';
+import EditMeal from './EditMeal';
 
 
 const MealItem = (props) => {
@@ -11,11 +12,10 @@ const MealItem = (props) => {
                 let sumCalories = 0;
                 return (
                 <div id="meal" className="container" key={uuid()}>
-                    <button className="btn btn-outline-danger btn-sm float-right mt-1"
+                    <button className="btn btn-outline-danger btn-sm float-right mt-1 ml-2"
                         onClick={() => props.deleteMeal(item.id) }
-                    >
-                        Delete
-                    </button>
+                    >Delete</button>
+                    <EditMeal data={item}/>
                     <h3>{item.name}</h3>
                     <hr />
                         <div>
