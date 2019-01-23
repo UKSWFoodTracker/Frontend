@@ -7,6 +7,7 @@ import {
 } from './types';
 import axios from 'axios';
 import { API } from '../routes/Api';
+import {toastr} from 'react-redux-toastr';
 
 export const getIngridients = () => {
     return {
@@ -31,6 +32,7 @@ export const postMeal = meal => dispatch => {
     axios
         .post(`${API}/meals`, meal)
         .then(() => dispatch(getMeals()))
+        .then(() => toastr.success("Posiłek dodany pomyślnie"))
         .catch(err => console.error("error: ", err)
     )
     
@@ -40,6 +42,7 @@ export const deleteMeal = mealID => dispatch => {
     axios
         .delete(`${API}/meals/${mealID}`)
         .then(() => dispatch(getMeals()))
+        .then(() => toastr.success("Posiłek usunięty pomyślnie"))
         .catch(err => console.error("error: ", err))
 }
 
