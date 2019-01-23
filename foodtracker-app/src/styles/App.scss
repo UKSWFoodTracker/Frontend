@@ -53,6 +53,10 @@
     min-height: 50px;
 }
 
+.stat {
+    background-color: #3f51b5;
+}
+
 #navbar {
     background-color: crimson !important;
 }
@@ -86,7 +90,8 @@
     bottom: -4px;
     right: 10px;
     margin-bottom: 10px;
-    border-radius: 50%
+    border-radius: 50%;
+    width: 37px;
 }
 
 .bc {

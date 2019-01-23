@@ -29,7 +29,6 @@ const NotFound = (props) => {
               className={classes.margin}
               to={"/"}
               variant="contained"
-              color="primary"
               component={props => <Link {...props}/>}
               id="hover-dis"
             >Strona główna

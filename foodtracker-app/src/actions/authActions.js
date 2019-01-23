@@ -12,11 +12,12 @@ export const registerUser = ( userData, history ) => dispatch => {
       .post(`${API}/Users/register`, userData)
       .then( () => history.push('/login'))
       .then(() => toastr.success("Pomyślnie zarejestrowano nowego użytkownika."))
-      .catch( err => 
+      .catch( err => {
+        toastr.error("Błednie wprowadzony dane.")
         dispatch({
             type: GET_ERRORS,
             payload: err.response
-        })
+        })}
       );
 };
 
@@ -36,11 +37,12 @@ export const loginUser = userData => dispatch => {
           dispatch(setCurrentUser(decoded));
       })
       .then(() => toastr.success("Pomyślnie zalogowano."))
-      .catch( err => 
+      .catch( err => {
+          toastr.error("Błednie wprowadzony dane.")
           dispatch({
               type: GET_ERRORS,
               payload: err.response
-          })
+          })}
       );
 };
 
