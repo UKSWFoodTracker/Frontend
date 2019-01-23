@@ -22,7 +22,7 @@ const dayDiff = (date1, date2) => {
 const weekCalories = (data) => {
     let caloriesWeek = 0;
     data.forEach(element => {
-        if(dayDiff(new Date(), new Date(element.created)) <= 8) {
+        if(dayDiff(new Date(), new Date(element.created)) <= 7) {
             element.ingredients.forEach(item => {
                 caloriesWeek += item.calories
             });

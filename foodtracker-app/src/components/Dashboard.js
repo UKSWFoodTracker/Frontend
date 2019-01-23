@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import { getMeals } from '../actions/ingridientsActions';
@@ -9,6 +8,7 @@ import MealItem from './meals/MealItem';
 import PaperSheet from './Papers/Calories';
 import WeekPaper from './Papers/CaloriesWeek';
 import CaloriesMonth from './Papers/CaloriesMonth';
+import Statistics from './statistics/Statistics';
 
 class Dashboard extends Component {
 
@@ -43,6 +43,7 @@ class Dashboard extends Component {
                 </div>
                {meals === undefined || meals.length !== 0 ? null : HelloUser}
                {meals === undefined ? null : <MealItem data={meals}/>}
+               <Statistics data={meals}/>
                <FloatButton />
             </div>
         )

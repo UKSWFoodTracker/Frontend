@@ -7,6 +7,12 @@ import store from './store';
 import './styles/App.scss';
 import setAuthToken from './utils/set_auth_token';
 import {setCurrentUser, logoutUser} from './actions/authActions';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfo } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faInfo)
+
 // Check for token
 if (localStorage.jwtToken) {
     // Set auth token header auth
