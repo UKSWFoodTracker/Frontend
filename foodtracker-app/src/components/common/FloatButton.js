@@ -70,23 +70,23 @@ class FloatButton extends React.Component {
       <div>
         <Button color="danger" className="btn btn-primary btn-float" onClick={this.toggle}>+</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Add your meal</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Dodaj posiłek</ModalHeader>
           <ModalBody>
           <Form onSubmit={this.onSubmit}>
             <FormGroup>
-                <Label for="exampleSelect">Select meal type</Label>
+                <Label for="exampleSelect">Wybierz rodzaj posiłku</Label>
                 <Input type="select" name="meal" id="exampleSelect" value={this.state.meal} onChange={this.handleChange} className="mb-2">
-                    <option value="breakfast">Breakfast</option>
-                    <option value="dinner">Dinner</option>
-                    <option value="supper">Supper</option>
+                    <option value="breakfast">Śniadanie</option>
+                    <option value="dinner">Obiad</option>
+                    <option value="supper">Kolacja</option>
                     <option value="lunch">Lunch</option>
-                    <option value="snack">Snack</option>
-                    <option value="other">Other</option>            
+                    <option value="snack">Przekąska</option>
+                    <option value="other">Inne</option>            
                 </Input>
                 <FormGroup>
-                    <Label>Ingridients</Label><br/>
+                    <Label>Składniki</Label><br/>
                     <div className="ing">
-                        <Input className="ing-input mr-1" type="text" name="ingridient" placeholder="name of the meal"
+                        <Input className="ing-input mr-1" type="text" name="ingridient" placeholder="składnik"
                             onChange={this.handleChange} value={this.state.ingridient} />
                         <Input className="ing-input" type="text" name="kcal" placeholder="kcal" 
                             onChange={this.handleChange} value={this.state.kcal}/>
@@ -97,7 +97,7 @@ class FloatButton extends React.Component {
                 </FormGroup>
             <hr />
 
-            <Input className="btn btn-primary" value="Save" type="submit" onClick={this.toggle} />
+            <Input className="btn btn-primary" value="Zapisz" type="submit" onClick={this.toggle} />
           </Form>
           </ModalBody>
         </Modal>

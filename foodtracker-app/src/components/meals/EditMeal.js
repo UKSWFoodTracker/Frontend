@@ -74,7 +74,7 @@ class EditMeal extends React.Component {
   render() {
     return (
       <div>
-        <Button className="btn btn-outline-primary btn-sm float-right mt-1 bc" onClick={this.toggle}>Edit</Button>
+        <Button className="btn btn-outline-primary btn-sm float-right mt-1 bc" onClick={this.toggle}>Edytuj</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add your meal</ModalHeader>
           <ModalBody>
@@ -116,7 +116,7 @@ class EditMeal extends React.Component {
                 </FormGroup>
             <hr />
 
-            <Input className="btn btn-primary" value="Save" type="submit" onClick={this.toggle} />
+            <Input className="btn btn-primary" value="Zapisz" type="submit" onClick={this.toggle} />
           </Form>
           </ModalBody>
         </Modal>

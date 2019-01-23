@@ -59,13 +59,13 @@ class Register extends Component {
                                             <div className="col-md-6 mx-auto">
                                                     <div className="card">
                                                             <div className="card-header">
-                                                                    <h1>Register</h1>
+                                                                    <h1>Rejestracja</h1>
                                                             </div>
                                                             <div className="card-body">
                                                                     <form onSubmit={this.onSubmit}>
                                                                             <InputField
                                                                                 name="username"
-                                                                                placeholder="Username"
+                                                                                placeholder="Nazwa użytkownika"
                                                                                 type="text"
                                                                                 value={this.state.username}
                                                                                 onChange={this.onChange}
@@ -81,7 +81,7 @@ class Register extends Component {
                                                                                 />
                                                                             <InputField
                                                                                 name="password"
-                                                                                placeholder="Password"
+                                                                                placeholder="Hasło"
                                                                                 type="password"
                                                                                 value={this.state.password}
                                                                                 onChange={this.onChange}
@@ -89,13 +89,13 @@ class Register extends Component {
                                                                             />
                                                                             <InputField
                                                                                 name="password2"
-                                                                                placeholder="Re-enter password"
+                                                                                placeholder="Wprowadz hasło ponownie"
                                                                                 type="password"
                                                                                 value={this.state.password2}
                                                                                 onChange={this.onChange}
                                                                                 error={errors.password2}
                                                                             />
-                                                                            <input type="submit" value="Submit" className="btn btn-primary btn-block btn-lg" />
+                                                                            <input type="submit" value="Zatwierdź" className="btn btn-primary btn-block btn-lg" />
                                                                     </form>
                                                             </div>
                                                     </div>

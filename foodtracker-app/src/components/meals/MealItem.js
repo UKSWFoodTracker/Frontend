@@ -14,7 +14,7 @@ const MealItem = (props) => {
                 <div id="meal" className="container" key={uuid()}>
                     <button className="btn btn-outline-danger btn-sm float-right mt-1 ml-2"
                         onClick={() => props.deleteMeal(item.id) }
-                    >Delete</button>
+                    >Usuń</button>
                     <EditMeal data={item}/>
                     <h3>{item.name}</h3>
                     <hr />
@@ -22,8 +22,8 @@ const MealItem = (props) => {
                             <table className="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Ingredient</th>
-                                        <th scope="col">Calories</th>
+                                        <th scope="col">Składniki</th>
+                                        <th scope="col">Kalorie</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,7 +36,7 @@ const MealItem = (props) => {
                                     </tr>
                                 )})}
                                     <tr key={uuid()}>
-                                        <td ><b>total calories</b></td>
+                                        <td ><b>Suma kalorii</b></td>
                                         <td><b>{sumCalories}</b></td>
                                     </tr>
                                 </tbody>

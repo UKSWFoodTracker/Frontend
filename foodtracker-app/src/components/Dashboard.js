@@ -22,7 +22,7 @@ class Dashboard extends Component {
         const HelloUser = (
             <div>
                 <h1>Dashboard</h1>
-                <h4>Click + button to add a meal.</h4>
+                <h4>Naciśnij guzik + aby dodać posiłek.</h4>
             </div>
         );
 
