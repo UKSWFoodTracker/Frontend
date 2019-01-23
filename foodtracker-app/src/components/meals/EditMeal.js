@@ -74,7 +74,7 @@ class EditMeal extends React.Component {
   render() {
     return (
       <div>
-        <Button className="btn btn-outline-primary btn-sm float-right mt-1" onClick={this.toggle}>Edit</Button>
+        <Button className="btn btn-outline-primary btn-sm float-right mt-1 bc" onClick={this.toggle}>Edit</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add your meal</ModalHeader>
           <ModalBody>

@@ -8,8 +8,8 @@
 }
 
 .btn-primary {
-    background-color: lightgreen;
-    border-color: lightgreen;
+    background-color: green;
+    border-color: green;
 }
 
 
@@ -18,6 +18,40 @@
     border-color: darkgreen;
 }
 
+#hover-dis:hover {
+    color:white;
+    background-color: #3f51b5
+}
+
+#paper-grid {
+    margin-bottom: 30px;
+}
+
+#month {
+    p, h3 { 
+        color: white;
+    }
+    background-color: #3f51b5;
+}
+
+#daily {
+    p, h3 { 
+        color: white;
+    }
+    background-color: crimson;
+}
+
+#weekly {
+    p, h3 { 
+        color: white;
+    }
+    background-color: green;
+}
+
+.pap {
+    min-width: 200px;
+    min-height: 50px;
+}
 
 #navbar {
     background-color: crimson !important;
@@ -53,6 +87,10 @@
     right: 10px;
     margin-bottom: 10px;
     border-radius: 50%
+}
+
+.bc {
+    background-color: transparent;
 }
 
 .ing {

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import setAuthToken from '../utils/set_auth_token';
 import jwt_decode from 'jwt-decode';
+import {toastr} from 'react-redux-toastr';
 
 import { GET_ERRORS, SET_USER } from './types';
 import { API } from '../routes/Api';
@@ -10,10 +11,11 @@ export const registerUser = ( userData, history ) => dispatch => {
     axios
       .post(`${API}/Users/register`, userData)
       .then( () => history.push('/login'))
+      .then(() => toastr.success("Pomyślnie zarejestrowano nowego użytkownika."))
       .catch( err => 
         dispatch({
             type: GET_ERRORS,
-            payload: err.response.data
+            payload: err.response
         })
       );
 };
@@ -33,10 +35,11 @@ export const loginUser = userData => dispatch => {
           // set current user
           dispatch(setCurrentUser(decoded));
       })
+      .then(() => toastr.success("Pomyślnie zalogowano."))
       .catch( err => 
           dispatch({
               type: GET_ERRORS,
-              payload: err.response.data
+              payload: err.response
           })
       );
 };
