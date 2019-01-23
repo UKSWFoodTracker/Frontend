@@ -55,13 +55,13 @@ class Login extends Component {
                         <div className="col-md-6 mx-auto">
                             <div className="card">
                                 <div className="card-header">
-                                    <h1>Login</h1>
+                                    <h1>Logowanie</h1>
                                 </div>
                                 <div className="card-body">
                                     <form onSubmit={this.onSubmit}>
                                         <InputField
                                           name="username"
-                                          placeholder="Username"
+                                          placeholder="Nazwa użytkownika"
                                           type="text"
                                           value={this.state.username}
                                           onChange={this.onChange}
@@ -69,13 +69,13 @@ class Login extends Component {
                                         />
                                         <InputField
                                           name="password"
-                                          placeholder="Password"
+                                          placeholder="Hasło"
                                           type="password"
                                           value={this.state.password}
                                           onChange={this.onChange}
                                           error={errors.password}
                                         />
-                                        <input type="submit" value="Submit" className="btn btn-primary btn-block btn-lg" />
+                                        <input type="submit" value="Zatwierdź" className="btn btn-primary btn-block btn-lg" />
                                     </form>
                                 </div>
                             </div>
